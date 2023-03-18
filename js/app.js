@@ -12,7 +12,7 @@ class CalorieTracker {
     this._displayCaloriesRemaining();
     this._displayCaloriesProgress();
 
-    document.getElementById('limit').value = this._calorieLimit;
+    document.getElementById("limit").value = this._calorieLimit;
   }
 
   // Public Methods/API //
@@ -302,9 +302,9 @@ class Storage {
   }
 
   static clearAll() {
-    localStorage.removeItem('totalCalories');
-    localStorage.removeItem('meals');
-    localStorage.removeItem('workouts');
+    localStorage.removeItem("totalCalories");
+    localStorage.removeItem("meals");
+    localStorage.removeItem("workouts");
 
     // If you want to clear the limit as well
     // localStorage.clear();
@@ -412,11 +412,13 @@ class App {
   }
 
   _reset() {
-    this._tracker.reset();
-    document.getElementById("meal-items").innerHTML = "";
-    document.getElementById("workout-items").innerHTML = "";
-    document.getElementById("filter-meals").value = "";
-    document.getElementById("filter-workouts").value = "";
+    if (confirm("Are you sure you want to reset the tracker?")) {
+      this._tracker.reset();
+      document.getElementById("meal-items").innerHTML = "";
+      document.getElementById("workout-items").innerHTML = "";
+      document.getElementById("filter-meals").value = "";
+      document.getElementById("filter-workouts").value = "";
+    }
   }
 
   _setLimit(e) {
